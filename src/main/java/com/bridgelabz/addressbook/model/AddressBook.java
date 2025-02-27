@@ -1,6 +1,10 @@
 package com.bridgelabz.addressbook.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import com.bridgelabz.addressbook.dto.AddressBookDTO;
 
 @Entity
 public class AddressBook {
@@ -12,31 +16,31 @@ public class AddressBook {
 
     public AddressBook() {}
 
-    public AddressBook(String name, String address) {
-        this.name = name;
-        this.address = address;
+    // New Constructor using DTO
+    public AddressBook(AddressBookDTO addressBookDTO) {
+        this.name = addressBookDTO.getName();
+        this.address = addressBookDTO.getAddress();
     }
 
-    // Getters
+    // Getters and Setters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    // Setters
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public void setAddress(String address) {
