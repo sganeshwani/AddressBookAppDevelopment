@@ -1,23 +1,19 @@
 package com.bridgelabz.addressbook.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import com.bridgelabz.addressbook.dto.AddressBookDTO;
 
-@Entity
 public class AddressBook {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private static long idCounter = 1; // Static counter to auto-increment IDs
+
     private Long id;
     private String name;
     private String address;
 
     public AddressBook() {}
 
-    // New Constructor using DTO
+    // Constructor using DTO
     public AddressBook(AddressBookDTO addressBookDTO) {
+        this.id = idCounter++; // Assigning unique ID
         this.name = addressBookDTO.getName();
         this.address = addressBookDTO.getAddress();
     }
